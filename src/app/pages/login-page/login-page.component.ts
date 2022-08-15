@@ -9,13 +9,25 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LoginPageComponent implements OnInit {
   form = new FormGroup({
-    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    email: new FormControl<string>('', [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(2),
+    ]),
     password: new FormControl<string>('', [Validators.required]),
   });
+
+  get email() {
+    return this.form.controls.email as FormControl;
+  }
 
   constructor(private authService: AuthenticationService) {}
 
   ngOnInit(): void {}
+
+  test() {
+    console.log('form', this.form);
+  }
 
   submit() {
     const { email, password } = this.form.value;

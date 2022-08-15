@@ -1,18 +1,27 @@
 <div class="wrapper">
   <h2 class="title">Login to your Account</h2>
-  <div class="subtitle">with your registered Email Address</div>
+  <div class="subtitle" (click)="test()">
+    with your registered Email Address
+  </div>
   <hr />
   <form class="form" [formGroup]="form" (ngSubmit)="submit()">
-    <input
-      type="text"
-      placeholder="Enter email address..."
-      formControlName="email"
-    />
-    <input
-      type="password"
-      placeholder="Enter password..."
-      formControlName="password"
-    />
+    <div class="field">
+      <input
+        type="text"
+        placeholder="Enter email address..."
+        formControlName="email"
+      />
+      <div class="error" *ngIf="email.errors && email.errors['email'] && email.touched">
+        Enter a valid email
+      </div>
+    </div>
+    <div class="field">
+      <input
+        type="password"
+        placeholder="Enter password..."
+        formControlName="password"
+      />
+    </div>
     <button [disabled]="!form.valid" type="submit">Login</button>
   </form>
   <div class="footer">

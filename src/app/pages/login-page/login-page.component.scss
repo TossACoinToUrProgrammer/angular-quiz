@@ -29,3 +29,13 @@
 .form {
   @include form;
 }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+}
