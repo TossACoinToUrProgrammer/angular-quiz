@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="header">
+    <h3>Guess the definition of the word and get points!</h3>
+    <p>The game will continue until 3 wrong answers</p>
+    <div class="score-bar">
+      <div class="scores">
+        Scores: <span>{{ score }}</span>
+      </div>
+      <div class="wrong">
+        Wrong guesses: <span>{{ wrongScore }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading && words">
+    <app-quiz
+      [onCorrectAnswer]="correctAnswerHanlder"
+      [onWrongAnswer]="wrongAnswerHandler"
+      [onStartNewGame]="startNewGame"
+      [onNextLevel]="nextLevelHandler"
+      [isGameOver]="isGameOver"
+      [words]="words"
+    ></app-quiz>
+  </div>
+  <app-quiz-popup [isVisible]="isPopupOpen" (close)="isPopupOpen = false">
+    <div class="popup-content">
+      <img src="../../../assets/images/trophy.png" alt="" />
+      <div *ngIf="score !== 0">
+        <h4>Congratulations!</h4>
+        <p>You scored {{ score }} point{{ score > 1 && "s" }}!</p>
+      </div>
+      <h4 *ngIf="score === 0">Game over</h4>
+    </div>
+  </app-quiz-popup>
+</div>

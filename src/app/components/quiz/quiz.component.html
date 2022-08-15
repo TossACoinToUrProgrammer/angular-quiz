@@ -1,0 +1,36 @@
+<div>
+  <div class="word">{{ words[correctWordIndex].word }}</div>
+  <div class="subtitle">what does this mean?</div>
+  <div class="options">
+    <app-variant-button
+      *ngFor="let word of words; let i = index"
+      [isSelected]="selectedWordIndex === i"
+      [isCorrect]="correctWordIndex === i"
+      [isResultVisible]="isSubmitted"
+      (click)="selectHandler(i)"
+    >
+      {{ word.definition }}
+    </app-variant-button>
+  </div>
+  <div class="buttons">
+    <button *ngIf="isGameOver" class="submit-btn" (click)="onStartNewGame()">
+      new game
+    </button>
+    <button
+      *ngIf="!isGameOver"
+      class="submit-btn"
+      (click)="submitHandler()"
+      [disabled]="selectedWordIndex === null || isSubmitted"
+    >
+      submit answer
+    </button>
+    <button
+      *ngIf="!isGameOver"
+      class="next-btn"
+      [ngClass]="{ hidden: !isSubmitted }"
+      (click)="nextLevelHandler()"
+    >
+      next
+    </button>
+  </div>
+</div>

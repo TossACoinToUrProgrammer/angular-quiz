@@ -1,0 +1,75 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  padding: 20px;
+  margin-bottom: 30px;
+  background-image: url("../../../assets/images/quiz-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 12.3071px;
+  text-align: center;
+  color: #53575f;
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.score-bar {
+  display: flex;
+  margin-top: 30px;
+}
+
+.scores {
+  margin-right: 20px;
+}
+
+.scores,
+.wrong {
+  span {
+    padding: 0px 10px;
+    border-radius: 10%;
+    color: white;
+  }
+}
+
+.scores span {
+  background-color: var(--green);
+}
+
+.wrong span {
+  background-color: var(--red);
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  img {
+    width: 100px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: $mediaBp-s) {
+  .popup-content {
+    width: 300px;
+  }
+}

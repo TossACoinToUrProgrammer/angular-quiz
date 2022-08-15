@@ -1,0 +1,74 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+nav {
+  padding: 30px 0;
+}
+
+.container {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 25px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primaryDark);
+  padding-left: 15px;
+  text-transform: capitalize;
+  line-height: 50px;
+  display: none;
+}
+
+.mobile-title {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+}
+
+.quiz-btn {
+  padding: 0 30px;
+  margin-right: 30px;
+  min-width: fit-content;
+  height: 45px;
+  line-height: 45px;
+  background: var(--primary);
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: $mediaBp-s) {
+  .content {
+    position: relative;
+  }
+
+  .header-right {
+    flex-wrap: unset;
+    justify-content: right;
+  }
+}
+
+@media screen and (min-width: $mediaBp-l) {
+  .container {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .title {
+    display: block;
+  }
+
+  .mobile-title {
+    display: none;
+  }
+}

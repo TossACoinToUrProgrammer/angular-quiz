@@ -1,0 +1,7 @@
+<div class="wrapper" [ngClass]="{ visible: isVisible }">
+  <div class="body">
+    <button (click)="closeHandler()" class="close-btn">x</button>
+    <ng-content></ng-content>
+  </div>
+  <div class="background" (click)="closeHandler()"></div>
+</div>

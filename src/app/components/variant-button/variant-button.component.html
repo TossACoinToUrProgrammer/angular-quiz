@@ -1,0 +1,10 @@
+<button
+  [ngClass]="{
+    selected: isSelected,
+    correct: isCorrect && isResultVisible,
+    wrong: !isCorrect && isSelected && isResultVisible
+  }"
+  [disabled]="isResultVisible"
+>
+  <ng-content></ng-content>
+</button>

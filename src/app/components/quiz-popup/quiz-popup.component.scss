@@ -1,0 +1,64 @@
+@import "../../../styles/variables";
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.body {
+  z-index: 2;
+  position: relative;
+  border-radius: 20px;
+  background-color: white;
+  padding: 20px 25px;
+  transition: all 0.7s ease;
+  opacity: 0;
+}
+
+.visible {
+  display: flex;
+
+  .body {
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #4135356a;
+  cursor: pointer;
+}
+
+@media screen and (min-width: $mediaBp-s) {
+  .wrapper {
+    position: absolute;
+  }
+
+  .background {
+    border-radius: 12.3071px;
+  }
+}

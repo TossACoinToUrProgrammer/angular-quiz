@@ -1,0 +1,9 @@
+@import "../styles/mixins";
+
+.content {
+  @include container;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 6.15355px 16.4095px 2.05118px #ededed;
+  border-radius: 12.3071px;
+}

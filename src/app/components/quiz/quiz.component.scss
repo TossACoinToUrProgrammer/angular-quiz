@@ -1,0 +1,55 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.word {
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: capitalize;
+  color: var(--primaryDark);
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.options {
+  padding: 30px 0 45px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px 30px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.submit-btn,
+.next-btn {
+  @include button;
+}
+
+.submit-btn {
+  margin-right: 20px;
+  background: var(--primary);
+
+  &:disabled {
+    background-color: var(--lightGray2);
+    cursor: unset;
+  }
+}
+
+.next-btn {
+  background: var(--green);
+}
+
+.hidden {
+  opacity: 0;
+}
+
+@media screen and (min-width: $mediaBp-m) {
+  .options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
