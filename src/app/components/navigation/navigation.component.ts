@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,5 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  constructor() {}
+  isAuth = false;
+  constructor(private authService: AuthenticationService) {
+    authService.userData.subscribe((user) => {
+      if (user?.email) {
+        this.isAuth = true;
+      }
+    });
+  }
+
+  logout() {
+    this.authService.SignOut();
+  }
 }

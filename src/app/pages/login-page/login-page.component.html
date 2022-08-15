@@ -1,0 +1,21 @@
+<div class="wrapper">
+  <h2 class="title">Login to your Account</h2>
+  <div class="subtitle">with your registered Email Address</div>
+  <hr />
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <input
+      type="text"
+      placeholder="Enter email address..."
+      formControlName="email"
+    />
+    <input
+      type="password"
+      placeholder="Enter password..."
+      formControlName="password"
+    />
+    <button [disabled]="!form.valid" type="submit">Login</button>
+  </form>
+  <div class="footer">
+    Dont have an account? <a routerLink="/sign-up">Register</a> now.
+  </div>
+</div>

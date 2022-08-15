@@ -4,9 +4,7 @@
     <div class="header-right">
       <h1 class="title mobile-title">Quiz time</h1>
       <a routerLink="/quiz" class="quiz-btn"> Start Quiz </a>
-      <div class="user">
-        <!-- <a to="/profile">user.username</a> -->
-      </div>
+      <button *ngIf="isAuth" (click)="logout()">Sign Out</button>
     </div>
   </div>
 </nav>
