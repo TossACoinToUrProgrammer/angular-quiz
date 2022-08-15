@@ -26,10 +26,6 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  test() {
-    console.log('form', this.form);
-  }
-
   submit() {
     const { email, password } = this.form.value;
     if (this.form.valid && email && password) {

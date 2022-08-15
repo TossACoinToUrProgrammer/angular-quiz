@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { catchError, forkJoin, map, mergeMap, of, tap, throwError } from 'rxjs';
-import { IWord } from 'src/app/models/word';
-import { WordsService } from 'src/app/services/words.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  catchError,
+  forkJoin,
+  map,
+  mergeMap,
+  of,
+  Subscription,
+  throwError,
+} from 'rxjs';
+import { IWord } from '../../models/word';
+import { WordsService } from '../../services/words.service';
 
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
   styleUrls: ['./quiz-page.component.scss'],
 })
-export class QuizPageComponent implements OnInit {
+export class QuizPageComponent implements OnInit, OnDestroy {
   score = 0;
   wrongScore = 0;
   isGameOver = false;
   isPopupOpen = false;
   words: IWord[] = [];
   loading = false;
+  _subscriptions: Subscription[] = [];
 
   constructor(private wordsService: WordsService) {
     this.nextLevelHandler = this.nextLevelHandler.bind(this);
@@ -56,7 +65,7 @@ export class QuizPageComponent implements OnInit {
   }
 
   private getQuizInitialProps(count: number) {
-    return this.wordsService
+    const subscription = this.wordsService
       .getRandomWords(count)
       .pipe(
         map((fetchedWords) => [...new Set(fetchedWords)]),
@@ -85,5 +94,10 @@ export class QuizPageComponent implements OnInit {
           this.loading = false;
         }
       });
+    this._subscriptions.push(subscription);
+  }
+
+  ngOnDestroy(): void {
+    this._subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }
