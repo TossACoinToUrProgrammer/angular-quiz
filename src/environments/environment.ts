@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyCFeR_XUeBSTb0lsFAFsEdjSWiTSX4IDLI',
-    authDomain: 'maybe-proj.firebaseapp.com',
-    projectId: 'maybe-proj',
-    storageBucket: 'maybe-proj.appspot.com',
-    messagingSenderId: '1089814575581',
-    appId: '1:1089814575581:web:275e00f880bd2b94981e34',
+    apiKey: process.env['NG_APP_FB_API_KEY'],
+    authDomain: process.env['NG_APP_FB_AUTH_DOMAIN'],
+    projectId: process.env['NG_APP_FB_PROJECT_ID'],
+    storageBucket: process.env['NG_APP_FB_STORAGE_BUCKET'],
+    messagingSenderId: process.env['NG_APP_FB_MESSAGING_SENDER'],
+    appId: process.env['NG_APP_FB_APP_ID'],
   },
 };
 

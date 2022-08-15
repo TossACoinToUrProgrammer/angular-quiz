@@ -11,14 +11,14 @@ export class WordsService {
 
   getRandomWords(count: number = 4) {
     return this.http.get<string[]>(
-      `https://random-word-form.herokuapp.com/random/noun?count=${count}`
+      `${process.env['NG_APP_WORD_API']}?count=${count}`
     );
   }
 
   getDefinition(word: string): Observable<string> {
     return this.http
       .get<DefinitionResponse>(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+        `${process.env['NG_APP_DICTIONARY_API']}/${word}`
       )
       .pipe(map((data) => data[0].meanings[0].definitions[0].definition));
   }
